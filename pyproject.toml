@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pdfroundtrip"
+dynamic = ["version"]
+description = "Round-trip PDF extraction and reconstruction: structured dict/JSON ↔ PDF on top of PyMuPDF"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE.txt", "NOTICE.txt"]
+keywords = [
+  "pdf",
+  "pymupdf",
+  "extraction",
+  "reconstruction",
+  "roundtrip",
+  "json",
+  "tables",
+  "layout",
+]
+authors = [
+  { name = "Bogatyrev Aleksandr", email = "bogatirevas.dev@gmail.com" },
+]
+maintainers = [
+  { name = "Bogatyrev Aleksandr", email = "bogatirevas.dev@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: GNU Affero General Public License v3",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Text Processing",
+]
+dependencies = [
+  "logger @ git+https://github.com/BogatirevAS/py-logger.git@0.1.1",
+  "rgb-tuple @ git+https://github.com/BogatirevAS/py-rgb-tuple.git@0.1.0",
+  "pymupdf>=1.28.2,<2",
+  "pymupdf4llm>=1.28.2,<2",
+  "pymupdf-layout>=1.28.2,<2",
+  "pydantic>=2.13,<3",
+  "pydantic-settings>=2.15,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.1,<10",
+]
+
+[project.urls]
+Documentation = "https://github.com/BogatiterAS/py-pdfroundtrip#readme"
+Issues = "https://github.com/BogatiterAS/py-pdfroundtrip/issues"
+Source = "https://github.com/BogatiterAS/py-pdfroundtrip"
+
+[tool.hatch.version]
+path = "src/pdfroundtrip/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pdfroundtrip"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+addopts = "-s"
+testpaths = ["tests"]
